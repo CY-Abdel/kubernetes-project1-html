@@ -1,0 +1,21 @@
+name: Mon premier workflow
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout Vue app
+        uses: actions/checkout@v4
+      - name: Set Up Node.js
+        uses: action/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Linter
+        working-directory: './frontend'
+        run: npm run lint
+        
